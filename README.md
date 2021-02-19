@@ -1,3 +1,8 @@
+## Modifications Made
+- Removed WorldEdit features to work without FAWE on MC 1.12.2 (FAWE has no working addon for CubicChunks which is used in the BTE modpack)
+
+---
+
 <p align="center">
     <img src="https://i.imgur.com/rFBzoq0.png">
 </p>
