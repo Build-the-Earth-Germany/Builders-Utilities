@@ -29,13 +29,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.block.data.Directional;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.material.Directional;
+import org.bukkit.material.MaterialData;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -74,17 +75,17 @@ public class TerracottaInteractListener implements Listener {
         }
         Bukkit.getScheduler().runTaskLater(BuildersUtilities.getInstance(), () -> {
             Block block = event.getClickedBlock();
-            Directional directional = (Directional) block.getBlockData();
+            Directional directional = (Directional) block.getState().getData();
             if (directional.getFacing().equals(BlockFace.NORTH)) {
-                directional.setFacing(BlockFace.EAST);
+                directional.setFacingDirection(BlockFace.EAST);
             } else if (directional.getFacing().equals(BlockFace.EAST)) {
-                directional.setFacing(BlockFace.SOUTH);
+                directional.setFacingDirection(BlockFace.SOUTH);
             } else if (directional.getFacing().equals(BlockFace.SOUTH)) {
-                directional.setFacing(BlockFace.WEST);
+                directional.setFacingDirection(BlockFace.WEST);
             } else if (directional.getFacing().equals(BlockFace.WEST)) {
-                directional.setFacing(BlockFace.NORTH);
+                directional.setFacingDirection(BlockFace.NORTH);
             }
-            block.setBlockData(directional);
+            block.getState().setData((MaterialData) directional);
         }, 0L);
         event.setCancelled(true);
     }

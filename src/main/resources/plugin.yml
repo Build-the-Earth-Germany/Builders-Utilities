@@ -23,43 +23,9 @@ commands:
   n:
     aliases: nv
     description: Toggles Nightvision.
-  /1:
-    description: alias
-  /2:
-    description: alias
-  /r:
-    description: alias
-  /s:
-    description: alias
-  /c:
-    description: alias
-  /f:
-    description: alias
-  /pa:
-    description: alias
-  /derot:
-    description: alias
-  /twist:
-    description: alias
-  /scale:
-    description: alias
-  /copy:
-    description: alias
-  /cuboid:
-    description: alias
-    aliases: /cub
-  /flip:
-    description: alias
-  /convex:
-    description: alias
-    aliases: /con
   blocks:
     description: Opens secret blocks menu
     aliases: secretblocks
-  ws:
-    description: alias
-  fs:
-    description: alias
   help:
     description: Help command
 

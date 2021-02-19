@@ -29,13 +29,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.data.type.TrapDoor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.material.TrapDoor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -75,9 +75,9 @@ public class IronTrapdoorListener implements Listener {
         }
         Bukkit.getScheduler().runTaskLater(BuildersUtilities.getInstance(), () -> {
             Block b = e.getClickedBlock();
-            TrapDoor trapDoor = (TrapDoor) b.getBlockData();
+            TrapDoor trapDoor = (TrapDoor) b.getState().getData();
             trapDoor.setOpen(!trapDoor.isOpen());
-            b.setBlockData(trapDoor);
+            b.getState().setData(trapDoor);
         }, 0L);
         e.setCancelled(true);
     }

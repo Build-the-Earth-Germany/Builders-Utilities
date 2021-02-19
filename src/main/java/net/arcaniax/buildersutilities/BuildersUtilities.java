@@ -106,28 +106,13 @@ public final class BuildersUtilities extends JavaPlugin {
         
         getCommand("butil").setExecutor(commandExecutor);
         getCommand("banner").setExecutor(commandExecutor);
-        getCommand("banner").setExecutor(commandExecutor);
         getCommand("armorcolor").setExecutor(commandExecutor);
         getCommand("secretblocks").setExecutor(commandExecutor);
         getCommand("blocks").setExecutor(commandExecutor);
         getCommand("n").setExecutor(commandExecutor);
         getCommand("nc").setExecutor(commandExecutor);
-        getCommand("/1").setExecutor(commandExecutor);
-        getCommand("/2").setExecutor(commandExecutor);
-        getCommand("/cuboid").setExecutor(commandExecutor);
-        getCommand("/convex").setExecutor(commandExecutor);
-        getCommand("/s").setExecutor(commandExecutor);
-        getCommand("/r").setExecutor(commandExecutor);
-        getCommand("/f").setExecutor(commandExecutor);
-        getCommand("/pa").setExecutor(commandExecutor);
-        getCommand("/c").setExecutor(commandExecutor);
-        getCommand("ws").setExecutor(commandExecutor);
-        getCommand("fs").setExecutor(commandExecutor);
         getCommand("af").setExecutor(commandExecutor);
         getCommand("advfly").setExecutor(commandExecutor);
-        getCommand("/derot").setExecutor(commandExecutor);
-        getCommand("/scale").setExecutor(commandExecutor);
-        getCommand("/twist").setExecutor(commandExecutor);
     }
 
     public Settings getSettings() {

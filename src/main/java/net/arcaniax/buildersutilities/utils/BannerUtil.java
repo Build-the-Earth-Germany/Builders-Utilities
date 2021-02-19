@@ -27,11 +27,13 @@ package net.arcaniax.buildersutilities.utils;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
+import org.bukkit.Material;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BannerMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.material.Dye;
 
 import java.util.*;
 
@@ -59,7 +61,7 @@ public class BannerUtil {
         allColors.add(DyeColor.BLUE);
         allColors.add(DyeColor.PURPLE);
         allColors.add(DyeColor.CYAN);
-        allColors.add(DyeColor.LIGHT_GRAY);
+        allColors.add(DyeColor.SILVER);
         allColors.add(DyeColor.GRAY);
         allColors.add(DyeColor.PINK);
         allColors.add(DyeColor.LIME);
@@ -71,8 +73,9 @@ public class BannerUtil {
     }
 
     public static ItemStack createBanner(String name, DyeColor base, String lore, List<Pattern> patterns) {
-        ItemStack item = Items.create(XMaterial.matchXMaterial(base.toString() + "_BANNER").get().parseMaterial(), (short) 0, 1, name, "");
+        ItemStack item = Items.create(Material.BANNER, getDataByDyeColor(base), 1, name, "");
         BannerMeta meta = (BannerMeta) item.getItemMeta();
+        meta.setBaseColor(base);
 
         meta.setPatterns(patterns);
         if (!lore.equals("")) {
@@ -88,8 +91,11 @@ public class BannerUtil {
     }
 
     public static ItemStack createDye(String name, DyeColor base, String lore) {
-        ItemStack item = Items.create(XMaterial.matchXMaterial(base.toString() + "_DYE").get().parseMaterial(), (short) 0, 1, name, "");
+        Dye dye = new Dye();
+        dye.setColor(base);
+        ItemStack item = dye.toItemStack(1);
         ItemMeta meta = item.getItemMeta();
+
         if (!lore.equals("")) {
             String[] loreListArray = lore.split("__");
             List<String> loreList = new ArrayList<>();
@@ -103,10 +109,11 @@ public class BannerUtil {
     }
 
     public static ItemStack createBanner(String name, DyeColor base, String lore) {
-        XMaterial.matchXMaterial(base.toString() + "_BANNER").get().parseMaterial();
 
-        ItemStack item = Items.create(XMaterial.matchXMaterial(base.toString() + "_BANNER").get().parseMaterial(), (short) 0, 1, name, "");
+
+        ItemStack item = Items.create(Material.BANNER, getDataByDyeColor(base), 1, name, "");
         BannerMeta meta = (BannerMeta) item.getItemMeta();
+        meta.setBaseColor(base);
         if (!lore.equals("")) {
             String[] loreListArray = lore.split("__");
             List<String> loreList = new ArrayList<>();
@@ -120,8 +127,9 @@ public class BannerUtil {
     }
 
     public static ItemStack createBanner(String name, int amount, DyeColor base, String lore, Pattern pat) {
-        ItemStack item = Items.create(XMaterial.matchXMaterial(base.toString() + "_BANNER").get().parseMaterial(), (short) 0, 1, name, "");
+        ItemStack item = Items.create(Material.BANNER, getDataByDyeColor(base), 1, name, "");
         BannerMeta meta = (BannerMeta) item.getItemMeta();
+        meta.setBaseColor(base);
         meta.addPattern(pat);
         if (!lore.equals("")) {
             String[] loreListArray = lore.split("__");
@@ -181,11 +189,47 @@ public class BannerUtil {
             case YELLOW:
             case MAGENTA:
             case LIGHT_BLUE:
-            case LIGHT_GRAY:
+            case SILVER:
             case LIME:
             default:
                 return DyeColor.BLACK;
         }
+    }
+
+    public static short getDataByDyeColor(DyeColor dyeColor) {
+        switch (dyeColor) {
+            case WHITE:
+                return 15;
+            case ORANGE:
+                return 14;
+            case MAGENTA:
+                return 13;
+            case LIGHT_BLUE:
+                return 12;
+            case YELLOW:
+                return 11;
+            case LIME:
+                return 10;
+            case PINK:
+                return 9;
+            case GRAY:
+                return 8;
+            case SILVER:
+                return 7;
+            case CYAN:
+                return 6;
+            case PURPLE:
+                return 5;
+            case BLUE:
+                return 4;
+            case BROWN:
+                return 3;
+            case GREEN:
+                return 2;
+            case RED:
+                return 1;
+        }
+        return 0;
     }
 }
 

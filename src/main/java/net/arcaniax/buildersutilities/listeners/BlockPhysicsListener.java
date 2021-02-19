@@ -39,7 +39,7 @@ public class BlockPhysicsListener implements Listener {
 
     @EventHandler
     public void onPhysics(BlockPhysicsEvent e) {
-        if (e.getSourceBlock().getType().equals(Material.AIR)){
+        if (e.getBlock().getType().equals(Material.AIR)){
             if (e.getChangedType().equals(Material.AIR)){
                 if (e.getBlock().getLocation().getBlockY()>0){
                     if (e.getBlock().getLocation().add(0, -1, 0).getBlock().getType().name().toLowerCase().contains("grass_block")){
@@ -48,7 +48,7 @@ public class BlockPhysicsListener implements Listener {
                 }
             }
         }
-        if (e.getSourceBlock().getType().name().toLowerCase().contains("snow")){
+        if (e.getBlock().getType().name().toLowerCase().contains("snow")){
             if (e.getBlock().getLocation().getBlockY()>0){
                 if (e.getBlock().getLocation().add(0, -1, 0).getBlock().getType().name().toLowerCase().contains("grass_block")){
                     return;

@@ -41,9 +41,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class UtilitiesMenuProvider implements InventoryProvider {
-    private static final ItemStack ENABLED = Items.create(Material.GREEN_STAINED_GLASS_PANE, "&c", "");
-    private static final ItemStack DISABLED = Items.create(Material.RED_STAINED_GLASS_PANE, "&c", "");
-    private static final ItemStack NO_PERMISSION = Items.create(Material.ORANGE_STAINED_GLASS_PANE, "&c", "");
+    private static final ItemStack ENABLED = Items.create(Material.STAINED_GLASS_PANE,(short)13, 1, "&c", "");
+    private static final ItemStack DISABLED = Items.create(Material.STAINED_GLASS_PANE,(short)14, 1, "&c", "");
+    private static final ItemStack NO_PERMISSION = Items.create(Material.STAINED_GLASS_PANE,(short)1, 1, "&c", "");
 
     private static final String ENABLED_LORE = "&a&lEnabled__&7__&7Click to toggle";
     private static final String DISABLED_LORE = "&c&lDisabled__&7__&7Click to toggle";
@@ -97,13 +97,13 @@ public class UtilitiesMenuProvider implements InventoryProvider {
         if (!player.hasPermission("builders.util.slabs")) {
             setNoPermission(2, contents);
             contents.set(1, 2, ClickableItem.empty(
-                    Items.create(Material.STONE_SLAB, "&6Custom Slab Breaking", "&7&lNo Permission")));
+                    Items.create(Material.STEP, "&6Custom Slab Breaking", "&7&lNo Permission")));
             return;
         }
 
         if (!BlockBreakListener.slabIds.contains(player.getUniqueId())) {
             setEnabledGlassPanes(2, true, contents);
-            contents.set(1, 2, ClickableItem.of(Items.create(Material.STONE_SLAB,
+            contents.set(1, 2, ClickableItem.of(Items.create(Material.STEP,
                     "&6Custom Slab Breaking", ENABLED_LORE + SLAB_BREAKING_LORE),
                     inventoryClickEvent -> {
                         BlockBreakListener.slabIds.add(player.getUniqueId());
@@ -111,7 +111,7 @@ public class UtilitiesMenuProvider implements InventoryProvider {
                     }));
         } else {
             setEnabledGlassPanes(2, false, contents);
-            contents.set(1, 2, ClickableItem.of(Items.create(Material.STONE_SLAB,
+            contents.set(1, 2, ClickableItem.of(Items.create(Material.STEP,
                     "&6Custom Slab Breaking", DISABLED_LORE + SLAB_BREAKING_LORE),
                     inventoryClickEvent -> {
                         BlockBreakListener.slabIds.remove(player.getUniqueId());
@@ -152,13 +152,13 @@ public class UtilitiesMenuProvider implements InventoryProvider {
         if (!player.hasPermission("builders.util.nightvision")) {
             setNoPermission(5, contents);
             contents.set(1, 5, ClickableItem.empty(
-                    Items.create(Material.ENDER_EYE, "&6Night Vision", "&7&lNo Permission")));
+                    Items.create(Material.EYE_OF_ENDER, "&6Night Vision", "&7&lNo Permission")));
             return;
         }
 
         if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
             setEnabledGlassPanes(5, true, contents);
-            contents.set(1, 5, ClickableItem.of(Items.create(Material.ENDER_EYE,
+            contents.set(1, 5, ClickableItem.of(Items.create(Material.EYE_OF_ENDER,
                     "&6Night Vision", ENABLED_LORE + NIGHT_VISION_LORE),
                     inventoryClickEvent -> {
                         player.removePotionEffect(PotionEffectType.NIGHT_VISION);
@@ -166,7 +166,7 @@ public class UtilitiesMenuProvider implements InventoryProvider {
                     }));
         } else {
             setEnabledGlassPanes(5, false, contents);
-            contents.set(1, 5, ClickableItem.of(Items.create(Material.ENDER_EYE,
+            contents.set(1, 5, ClickableItem.of(Items.create(Material.EYE_OF_ENDER,
                     "&6Night Vision", DISABLED_LORE + NIGHT_VISION_LORE),
                     inventoryClickEvent -> {
                         player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0, true, false));

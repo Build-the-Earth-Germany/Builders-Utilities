@@ -21,13 +21,18 @@ repositories {
         url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     }
     maven {
+        name = "Bungee"
+        url = uri("https://maven.elmakers.com/repository/")
+    }
+    maven {
         name = "Mojang"
         url = uri("https://libraries.minecraft.net/")
     }
 }
 
 dependencies {
-    compileOnlyApi("org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT")
+    compileOnlyApi("org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT")
+    compileOnlyApi("net.md-5:bungeecord-chat:1.12-SNAPSHOT")
     compileOnlyApi("com.mojang:authlib:1.5.25")
     implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.8.1")
     implementation("org.bstats:bstats-bukkit:2.2.1")

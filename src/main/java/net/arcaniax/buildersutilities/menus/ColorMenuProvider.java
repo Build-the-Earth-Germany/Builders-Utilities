@@ -52,21 +52,21 @@ public class ColorMenuProvider implements InventoryProvider {
 
     private void setLeatherItems(Player player, InventoryContents contents) {
         int r;
-        if (contents.get(3, 4).get().getItem().getType().equals(Material.RED_STAINED_GLASS)) {
+        if (contents.get(3, 4).get().getItem().getType().equals(Material.STAINED_GLASS) && (contents.get(3, 4).get().getItem().getData().getData() == (byte )14)) {
             r = 0;
         } else {
             r = (int) (contents.get(3, 4).get().getItem().getAmount() * MULTIPLIER);
         }
 
         int g;
-        if (contents.get(3, 5).get().getItem().getType().equals(Material.GREEN_STAINED_GLASS)) {
+        if (contents.get(3, 4).get().getItem().getType().equals(Material.STAINED_GLASS) && (contents.get(3, 4).get().getItem().getData().getData() == (byte )13)) {
             g = 0;
         } else {
             g = (int) (contents.get(3, 5).get().getItem().getAmount() * MULTIPLIER);
         }
 
         int b;
-        if (contents.get(3, 6).get().getItem().getType().equals(Material.BLUE_STAINED_GLASS)) {
+        if (contents.get(3, 4).get().getItem().getType().equals(Material.STAINED_GLASS) && (contents.get(3, 4).get().getItem().getData().getData() == (byte )11)) {
             b = 0;
         } else {
             b = (int) (contents.get(3, 6).get().getItem().getAmount() * MULTIPLIER);
@@ -84,7 +84,7 @@ public class ColorMenuProvider implements InventoryProvider {
 
     private void setRedItem(Player player, InventoryContents contents, int amount) {
         contents.set(3, 4, ClickableItem.of(
-                amount == 0 ? Items.create(Material.RED_STAINED_GLASS, "&cRed", LORE) :
+                amount == 0 ? Items.create(Material.STAINED_GLASS, (short)14, 1,  "&cRed", LORE) :
                         Items.createHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2Y0NmMzMWQ2ZWU2ZWE2MTlmNzJlNzg1MjMyY2IwNDhhYjI3MDQ2MmRiMGNiMTQ1NDUxNDQzNjI1MWMxYSJ9fX0=",
                                 amount, "&cRed", LORE), inventoryClickEvent -> {
                     if (inventoryClickEvent.isShiftClick()) {
@@ -108,7 +108,7 @@ public class ColorMenuProvider implements InventoryProvider {
 
     private void setGreenItem(Player player, InventoryContents contents, int amount) {
         contents.set(3, 5, ClickableItem.of(
-                amount == 0 ? Items.create(Material.GREEN_STAINED_GLASS, "&aGreen", LORE) :
+                amount == 0 ? Items.create(Material.STAINED_GLASS, (short)13, 1, "&aGreen", LORE) :
                         Items.createHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzZmNjlmN2I3NTM4YjQxZGMzNDM5ZjM2NThhYmJkNTlmYWNjYTM2NmYxOTBiY2YxZDZkMGEwMjZjOGY5NiJ9fX0=",
                                 amount, "&aGreen", LORE), inventoryClickEvent -> {
                     if (inventoryClickEvent.isShiftClick()) {
@@ -132,7 +132,7 @@ public class ColorMenuProvider implements InventoryProvider {
 
     private void setBlueItem(Player player, InventoryContents contents, int amount) {
         contents.set(3, 6, ClickableItem.of(
-                amount == 0 ? Items.create(Material.BLUE_STAINED_GLASS, "&bBlue", LORE) :
+                amount == 0 ? Items.create(Material.STAINED_GLASS,(short)11, 1, "&bBlue", LORE) :
                         Items.createHead("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjgzOWUzODFkOWZlZGFiNmY4YjU5Mzk2YTI3NjQyMzhkY2ViMmY3ZWVhODU2ZGM2ZmM0NDc2N2RhMzgyZjEifX19",
                                 amount, "&bBlue", LORE), inventoryClickEvent -> {
                     if (inventoryClickEvent.isShiftClick()) {

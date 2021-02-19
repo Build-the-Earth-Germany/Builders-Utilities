@@ -28,12 +28,13 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.data.type.Slab;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.material.Step;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -58,15 +59,17 @@ public class BlockBreakListener implements Listener {
             return;
         }
         Material type = e.getPlayer().getInventory().getItemInMainHand().getType();
-        if (type.toString().toLowerCase().contains("slab")) {
+        /*if (type.toString().toLowerCase().contains("slab")) {
             if (e.isCancelled()) {
                 return;
             }
             if (e.getBlock().getType().toString().toLowerCase().contains("slab")) {
                 if (isTop(e.getPlayer(), e.getBlock())) {
-                    Slab blockdata = (Slab) e.getBlock().getBlockData();
-                    if (blockdata.getType().equals(Slab.Type.DOUBLE)) {
-                        blockdata.setType(Slab.Type.BOTTOM);
+
+                    if (e.getBlock().getType().equals(Step.Type.DOUBLE)) {
+                        Step s = new Step();
+                        s.toItemStack(0).getItemMeta().
+                        blockdata.setType(S);
                         e.getBlock().setBlockData(blockdata, true);
                         e.setCancelled(true);
                     }
@@ -79,7 +82,7 @@ public class BlockBreakListener implements Listener {
                     }
                 }
             }
-        }
+        }*/
     }
 
     private boolean isTop(Player player, Block block) {
